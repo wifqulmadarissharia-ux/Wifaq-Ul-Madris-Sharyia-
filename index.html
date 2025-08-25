@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>وفاق المدارس الشرعیہ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f7f5;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #006400, #228B22);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    nav {
+      background: #004d00;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffdd57;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      line-height: 2.2;
+    }
+    h2 {
+      color: #006400;
+      border-bottom: 2px solid #006400;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #006400;
+      color: white;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #006400;
+    }
+    .grade-box {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .A {background: #28a745;}
+    .B {background: #007bff;}
+    .C {background: #ffc107; color:black;}
+    .F {background: #dc3545;}
+    .print-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #006400;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .print-btn:hover {
+      background: #228B22;
+    }
+  </style>
+</head>
+<body>
+
+<header>وفاق المدارس الشرعیہ</header>
+<nav>
+  <a href="#" onclick="showPage('home')">ہوم</a>
+  <a href="#" onclick="showPage('result')">رزلٹ</a>
+  <a href="#" onclick="showPage('notifications')">نوٹیفکیشن</a>
+  <a href="#" onclick="showPage('about')">اباوٹ</a>
+</nav>
+
+<!-- ہوم پیج -->
+<div class="container" id="home">
+  <h2>خوش آمدید</h2>
+  <p>وفاق المدارس الشرعیہ کی آفیشل ویب سائٹ پر خوش آمدید۔ یہاں آپ رزلٹ دیکھ سکتے ہیں، تازہ ترین نوٹیفکیشنز پڑھ سکتے ہیں اور بورڈ کی معلومات حاصل کر سکتے ہیں۔</p>
+  
+  <h2>وفاق المدارس الشرعیہ کا تعارف</h2>
+  <p>
+    وفاق المدارس الشرعیہ پاکستان کا سب سے بڑا دینی تعلیمی بورڈ ہے جو قرآن و سنت کی تعلیمات کو عام کرنے کے لیے کوشاں ہے۔ 
+    یہ ادارہ ملک بھر کے ہزاروں مدارس کو نصاب، امتحانات اور سرٹیفیکیٹ فراہم کرتا ہے تاکہ دینی تعلیم کا معیار بلند اور یکساں رہے۔
+  </p>
+
+  <h2>بورڈ کی افادیت</h2>
+  <ul>
+    <li>📖 دینی علوم کی ترویج و اشاعت</li>
+    <li>🕌 مدارس کے نصاب کی نگرانی اور بہتری</li>
+    <li>📝 منظم امتحانی نظام اور شفاف نتائج</li>
+    <li>🎓 اسناد کی ملک بھر اور بیرونِ ملک میں تسلیم شدگی</li>
+    <li>🤝 علماء و طلبہ کی خدمت اور رہنمائی</li>
+  </ul>
+</div>
+
+<!-- رزلٹ پیج -->
+<div class="container" id="result" style="display:none;">
+  <h2>رزلٹ پورٹل</h2>
+  <input type="text" id="rollInput" placeholder="رول نمبر درج کریں">
+  <button onclick="checkResult()">نتیجہ دیکھیں</button>
+
+  <div id="result-card" style="display:none; margin-top:20px;">
+    <h2>رزلٹ شیٹ</h2>
+    <table>
+      <tr><th colspan="2">طالب علم کی معلومات</th></tr>
+      <tr><td class="highlight">نام</td><td id="studentName"></td></tr>
+      <tr><td class="highlight">رول نمبر</td><td id="studentRoll"></td></tr>
+      <tr><td class="highlight">کورس</td><td id="studentCourse"></td></tr>
+      <tr><td class="highlight">مدرسہ</td><td id="studentInstitute"></td></tr>
+      <tr><td class="highlight">امتحان</td><td id="examName"></td></tr>
+      <tr><td class="highlight">تاریخ امتحان</td><td id="examDate"></td></tr>
+    </table>
+
+    <table id="marksTable">
+      <thead>
+        <tr>
+          <th>مضمون</th>
+          <th>کل نمبر</th>
+          <th>حاصل نمبر</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <table>
+      <tr><td class="highlight">کل نمبر</td><td id="totalMarks"></td></tr>
+      <tr><td class="highlight">حاصل نمبر</td><td id="obtainedMarks"></td></tr>
+      <tr><td class="highlight">فیصد</td><td id="percentage"></td></tr>
+      <tr><td class="highlight">گریڈ</td><td id="grade"></td></tr>
+    </table>
+    <div id="gradeBox"></div>
+    <button class="print-btn" onclick="window.print()">پرنٹ کریں</button>
+  </div>
+</div>
+
+<!-- نوٹیفکیشن -->
+<div class="container" id="notifications" style="display:none;">
+  <h2>نوٹیفکیشن</h2>
+  <ul>
+    <li>📢 سالانہ امتحانات کے نتائج کا اعلان 25 اگست 2025 کو کیا گیا۔</li>
+    <li>📢 نئے داخلے جاری ہیں۔ مزید معلومات کے لیے بورڈ سے رابطہ کریں۔</li>
+  </ul>
+</div>
+
+<!-- اباوٹ پیج -->
+<div class="container" id="about" style="display:none;">
+  <h2>ہمارے بارے میں</h2>
+  <p>وفاق المدارس الشرعیہ کا مقصد قرآن و سنت کی روشنی میں دینی علوم کو عام کرنا ہے۔</p>
+  <p><strong>رابطہ نمبر (واٹس ایپ):</strong> 03041580642</p>
+  <p><strong>ای میل:</strong> demo@example.com</p>
+</div>
+
+<script>
+  const results = {
+    "1": {
+      name: "محمد خالد ضرار",
+      roll: "1",
+      course: "درس نظامی",
+      institute: "جامعہ دارالعلوم کراچی",
+      exam: "سالانہ امتحان",
+      date: "25 اگست 2025",
+      subjects: [
+        {name: "فقہ", total: 100, obtained: 90},
+        {name: "حدیث", total: 100, obtained: 85},
+        {name: "تفسیر", total: 100, obtained: 88},
+        {name: "عقیدہ", total: 100, obtained: 80}
+      ]
+    }
+  };
+
+  function checkResult() {
+    const roll = document.getElementById("rollInput").value;
+    const student = results[roll];
+    if (!student) {
+      alert("اس رول نمبر کا رزلٹ موجود نہیں ہے");
+      return;
+    }
+
+    document.getElementById("studentName").innerText = student.name;
+    document.getElementById("studentRoll").innerText = student.roll;
+    document.getElementById("studentCourse").innerText = student.course;
+    document.getElementById("studentInstitute").innerText = student.institute;
+    document.getElementById("examName").innerText = student.exam;
+    document.getElementById("examDate").innerText = student.date;
+
+    let tbody = document.querySelector("#marksTable tbody");
+    tbody.innerHTML = "";
+    let total = 0, obtained = 0;
+    student.subjects.forEach(sub => {
+      tbody.innerHTML += `<tr><td>${sub.name}</td><td>${sub.total}</td><td>${sub.obtained}</td></tr>`;
+      total += sub.total;
+      obtained += sub.obtained;
+    });
+
+    let percentage = ((obtained/total)*100).toFixed(2);
+    let grade = percentage >= 80 ? "A" : percentage >= 60 ? "B" : percentage >= 40 ? "C" : "F";
+
+    document.getElementById("totalMarks").innerText = total;
+    document.getElementById("obtainedMarks").innerText = obtained;
+    document.getElementById("percentage").innerText = percentage + "%";
+    document.getElementById("grade").innerText = grade;
+    document.getElementById("gradeBox").innerHTML = `<div class="grade-box ${grade}">گریڈ: ${grade}</div>`;
+
+    document.getElementById("result-card").style.display = "block";
+  }
+
+  function showPage(page) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("result").style.display = "none";
+    document.getElementById("notifications").style.display = "none";
+    document.getElementById("about").style.display = "none";
+    document.getElementById(page).style.display = "block";
+  }
+</script>
+
+</body>
+</html>
